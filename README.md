@@ -6,6 +6,6 @@ Ejecutar el comando ng install
 Ejecutar el comando ng serve
 
 # Ejecucion de Back 
-
+JDK 17
 Ejecutar el comando mvn clean install
 
