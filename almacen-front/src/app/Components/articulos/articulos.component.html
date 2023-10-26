@@ -1,0 +1,48 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <div class="card text-center mb-4 bg-light">
+          <div class="card-body text-center">
+            <h2>Precio</h2>
+                  <form [formGroup] ='articuloForm' (ngSubmit)="agregarArticulo()">
+
+                    <div class="mb-3">
+                      <input type="text" formControlName="nombre"
+                        class="form-control"  aria-describedby="helpId" placeholder="Nombre de articulo">
+                    </div>
+
+                    <div class="mb-3">
+                      <input type="number" formControlName="precio_u"
+                        class="form-control"  aria-describedby="helpId" placeholder="Precio">
+                    </div>
+
+
+                  <button type="submit"  class="btn btn-primary">Accion</button>
+                  
+                </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+    
+          </tr>
+        </thead>
+       <tbody>
+           <tr *ngFor=" let articulo of listArticulo ">
+            <th scope="row">{{articulo.nombre}}</th>
+            <th scope="row">{{ articulo.precio_u }}</th>
+          </tr>
+        
+    
+        </tbody>
+      </table>
+    </div>

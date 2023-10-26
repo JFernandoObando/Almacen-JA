@@ -1,0 +1,71 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <div class="card text-center mb-4 bg-light">
+          <div class="card-body text-center">
+            <h2>Orden</h2>
+                  <form [formGroup] ='ordenForm' (ngSubmit)="agregarOrden()">
+
+                    <div class="mb-2 mt-4">
+                      <label>Nombre del Articulo</label>
+                      <select name="articulo" id="articulo" class="form-select" aria-label="Default select example"
+                      formControlName="articulo">
+                      
+                        <option  selected hidden >Nombre del Articulo</option> 
+                        <option [ngValue]="articulo" *ngFor="let articulo of articuloo">{{articulo.nombre}}</option>
+      
+                      </select>
+                    </div>
+
+                    <div class="mb-2 mt-4">
+                      <label>Nombre del Cliente</label>
+                      <select  name="cliente" id="cliente" class="form-select" aria-label="Default select example"
+                      formControlName="cliente"
+                      >
+                        <option selected hidden >Nombre del Cliente</option> 
+                        <option [ngValue]="cliente"  *ngFor="let cliente of clientess">{{cliente.nombre}}</option>
+      
+                      </select>
+                    </div>
+
+
+                    <div class="mb-3">
+                      <label>Fecha de la Orden</label>
+                      <input type="date" formControlName="fecha"
+                        class="form-control"  aria-describedby="helpId" placeholder="Fecha">
+                    </div>
+
+
+                  <button type="submit"  class="btn btn-primary">Accion</button>
+                  
+                </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="container">
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nombre del Cliente</th>
+          <th scope="col">Apellido del Cliente</th>
+          <th scope="col">Articulo</th>
+          <th scope="col">Orden</th>
+  
+        </tr>
+      </thead>
+     <tbody>
+         <tr *ngFor=" let detalle of listDetalle ">
+          <th scope="row">{{detalle[0]}}</th>
+          <th scope="row">{{detalle[1]}}</th>
+          <th scope="row">{{detalle[2]}}</th>
+          <th scope="row">{{detalle[3]}}</th>
+        </tr>
+      
+  
+      </tbody>
+    </table>
+  </div>

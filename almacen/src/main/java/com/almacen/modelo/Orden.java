@@ -1,78 +1,89 @@
-
 package com.almacen.modelo;
 
-import jakarta.persistence.Column;
+import java.util.Date;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.EntityManager;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import java.util.Date;
+
+
+
 @Entity
-@Table(name = "Orden")
+@Table (name="orden")
 public class Orden {
+	@Id
+	private String id;
+	private Date fecha;
+	
 
-    @Id
-    private String id;
+	@ManyToOne
+	@JoinColumn (name="id_cliente")
+	private Cliente cliente;
 
-    @Column(name = "fecha", length = 60, nullable = false)
-    private Date fecha;
+	@ManyToOne
+	@JoinColumn (name="id_articulo")
+	private Articulo articulo;
 
 
-    
- @ManyToOne
-    @JoinColumn(name = "cliente_id", referencedColumnName = "id") // La columna "cliente_id" se relaciona con "id" en Cliente
-    private Cliente cliente;
- 
-   public static String generarNumeroOrden() {
-        // Aquí puedes implementar la lógica para generar el número de orden
-        // Por ejemplo, puedes consultar la base de datos para obtener el último número de orden y calcular el siguiente
-        // En este ejemplo, generamos un número de orden ficticio
-        String nuevoNumeroOrden = "OC-000001";
-        return nuevoNumeroOrden;
-    }
-       
-    public Orden(String id, Date fecha, Cliente cliente) {
-        super();
-        this.id = id;
-        this.fecha = fecha;
-        this.cliente=cliente;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public Orden() {
-        super();
-    }
 
-    public String getID() {
-        return id;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public void setID(String id) {
-        // Incrementa el número
-        int numero = Integer.parseInt(id.substring(3)) + 1;
 
-        // Formatea el nuevo ID
-        this.id = String.format("OC-%06d", numero);
+	public Date getFecha() {
+		return fecha;
+	}
 
-    }
 
-    public Date getFecha() {
-        return fecha;
-    }
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-/*
-      public static String generarNuevoNumeroOrden(String ultimoNumeroOrden) {
-        if (ultimoNumeroOrden != null) {
-            int numero = Integer.parseInt(ultimoNumeroOrden.substring(3)) + 1;
-            return String.format("OC-%06d", numero);
-        } else {
-            return "OC-000001";
-        }
-    }
- */
 
+	public Articulo getArticulo() {
+		return articulo;
+	}
+
+
+	public void setArticulo(Articulo articulo) {
+		this.articulo = articulo;
+	}
+
+
+	public Orden(String id, Date fecha, Articulo articulo,Cliente cliente) {
+		super();
+		this.id = id;
+		this.fecha = fecha;
+		this.articulo = articulo;
+		this.cliente = cliente;
+	}
+	
+	public Orden() {
+	
+	}
+
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
+	
+	
+	
 }
+
+

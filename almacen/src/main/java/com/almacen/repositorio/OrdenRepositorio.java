@@ -1,16 +1,18 @@
-
 package com.almacen.repositorio;
 
-import com.almacen.modelo.Orden;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
 
+import com.almacen.modelo.Orden;
 
-@Repository
-public interface OrdenRepositorio extends JpaRepository<Orden, Long> {
+public interface OrdenRepositorio extends JpaRepository<Orden,Long> {
 
-    @Query("SELECT o.id FROM Orden o ORDER BY o.id DESC")
-    String findMaxNumeroOrden();
+@Query(nativeQuery = true, value = "SELECT cliente.nombre AS nombre_cliente, cliente.apellido AS apellido_cliente, articulo.nombre AS nombre_articulo, orden.id AS numero_orden " +
+		    "FROM orden " +
+		    "JOIN cliente ON orden.id_cliente = cliente.id " +
+		    "JOIN articulo ON orden.id_articulo = articulo.id")
+	List<Object[]> findOrderDetails();
+	
 }
-

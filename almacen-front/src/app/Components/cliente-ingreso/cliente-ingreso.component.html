@@ -1,0 +1,50 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <div class="card text-center mb-4 bg-light">
+          <div class="card-body text-center">
+            <h2>Cliente</h2>
+                  <form [formGroup] ='clienteForm' (ngSubmit)="agregarCliente()">
+
+                    <div class="mb-3">
+                      <input type="text" formControlName="nombre"
+                        class="form-control"  aria-describedby="helpId" placeholder="Nombre">
+
+                    </div>
+
+                    <div class="mb-3">
+                      <input type="text" formControlName="apellido"
+                        class="form-control"  aria-describedby="helpId" placeholder="Apellido">
+                    </div>
+
+
+                  <button type="submit"  class="btn btn-primary">Accion</button>
+                  
+                </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+  
+        </tr>
+      </thead>
+     <tbody>
+         <tr *ngFor=" let cliente of listCliente ">
+          <th scope="row">{{cliente.nombre}}</th>
+          <th scope="row">{{cliente.apellido}}</th>
+        </tr>
+      
+  
+      </tbody>
+    </table>
+  </div>
