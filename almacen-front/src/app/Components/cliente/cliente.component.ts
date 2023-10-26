@@ -27,8 +27,6 @@ this.obtenerCliente();
 }
 
 private obtenerCliente(){
-  console.log("ENTRA")
-  
 
   this.clienteServicio.getCliente().pipe(
     tap(data => {
@@ -44,19 +42,14 @@ private obtenerCliente(){
 
 
 eliminarElemento(nombreCliente: any){
-  console.log(nombreCliente)
 
   this.clienteServicio.eliminarCliente(nombreCliente).subscribe(
     (response) => {
 
-    //  this.clientesForm.reset();
-   //   this.clientesForm.get('nombre')?.setValue('');
       this.obtenerCliente();
     },
     (error) => {
-     
-    //  this.clientesForm.reset();
-     // this.clientesForm.get('apellido')?.setValue('');
+
       console.error('Error:', error);
     }
   );
@@ -72,7 +65,7 @@ this.clientesForm.setValue({
 }
 
 agregarCliente(){
-  console.log("aaa")
+
   if (this.clientesForm.valid) {
     const formulario: Cliente = {
       id: this.clientesForm.get('id')?.value || '',
@@ -80,7 +73,7 @@ agregarCliente(){
     apellido: this.clientesForm.get('apellido')?.value || '',
   };
   const cliente = this.clientesForm.value;
-  console.log(formulario);
+
  
 
   this.clienteServicio.crearCliente(formulario).subscribe(

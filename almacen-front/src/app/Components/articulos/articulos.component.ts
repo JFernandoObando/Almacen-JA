@@ -23,7 +23,7 @@ export class ArticulosComponent  implements OnInit {
   
 ngOnInit():void{
  this.obtenerArticulo();
- console.log("ENTRA")
+ 
   
 
  }
@@ -33,7 +33,7 @@ ngOnInit():void{
   this.articuloServicio.getArticulo().pipe(
 
     tap(data => {
-      console.log(data)
+  
       this.listArticulo = data;
     }),
     catchError(error => {
@@ -51,7 +51,7 @@ ngOnInit():void{
       precio_u: this.articuloForm.get('precio_u')?.value || '',
     };
     const articulo = this.articuloForm.value;
-    console.log(formulario);
+
 
 
     this.articuloServicio.crearArticulo(formulario).subscribe(

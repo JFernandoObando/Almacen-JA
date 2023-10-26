@@ -14,7 +14,7 @@ export class ArticuloService {
   constructor(private httpClient : HttpClient) { }
 
   getArticulo():Observable<any>{
-    console.log("sll")
+
     return this.httpClient.get(this.url)
   }
 
@@ -22,7 +22,7 @@ export class ArticuloService {
 
  
     crearArticulo(articulo: Articulo):Observable<any> {
-    console.log("sdkk")
+
       return this.httpClient.post(`${this.url}`, articulo);
     }
 

@@ -14,13 +14,13 @@ export class ClienteService {
   constructor(private httpClient : HttpClient) { }
 
   getCliente():Observable<any>{
-    console.log("sll")
+  
     return this.httpClient.get(this.url)
   }
 
  
     crearCliente(cliente: Cliente):Observable<any> {
-    console.log("sdkk")
+  
       return this.httpClient.post(`${this.url}`, cliente);
     }
 

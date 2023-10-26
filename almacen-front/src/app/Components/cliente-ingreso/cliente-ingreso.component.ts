@@ -36,35 +36,19 @@ export class ClienteIngresoComponent implements OnInit {
     {"nombre":"Erick",
      "apellido":"Perez"}
    ]
-     console.log("Aaks")
+ 
    }
 
   agregarCliente(){
-    console.log("aaa")
+ 
     if (this.clienteForm.valid) {
       const formulario: Cliente = {
       nombre: this.clienteForm.get('nombre')?.value || '',
       apellido: this.clienteForm.get('apellido')?.value || '',
     };
     const cliente = this.clienteForm.value;
-    console.log(formulario);
 
-/*
-    this._ClienteIngresoService.crearCriterio(formulario).subscribe(
-      (response) => {
-        this.toastr.success('Criterio registrado correctamente!', 'Éxito!');
-        this.criteriosForm.reset();
-        this.valorCombo = false;
-        this.criteriosForm.get('nombre')?.setValue('');
-      },
-      (error) => {
-        this.toastr.error('Error al crear el criterio.', 'Error');
-        this.clienteForm.reset();
-        this.valorCombo = false;
-        this.clienteForm.get('apellido')?.setValue('');
-        console.error('Error:', error);
-      }
-    );*/
+
 
   }
   }
